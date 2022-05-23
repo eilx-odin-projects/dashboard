@@ -5,10 +5,65 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css" />
+    <script src="https://unpkg.com/feather-icons"></script>
     <script src="main.js" type="module" defer></script>
     <title>Dashboard</title>
 </head>
 <body>
-    W.I.P
+    <nav id="SideControls">
+        <a class="large" href="#">
+            <img data-feather="image" />Dashboard
+        </a>
+        <br />
+        <a href="#">
+            <img data-feather="home"/>Home
+        </a><a href="#">
+            <img data-feather="layout"/>Profile
+        </a><a href="#">
+            <img data-feather="message-square"/>Messages
+        </a><a href="#">
+            <img data-feather="clock"/>History
+        </a><a href="#">
+            <img data-feather="layers"/>Tasks
+        </a><a href="#">
+            <img data-feather="users"/>Communities
+        </a>
+        <br />
+        <a href="#">
+            <img data-feather="settings"/>Settings
+        </a><a href="#">
+            <img data-feather="help-circle"/>Support
+        </a><a href="#">
+            <img data-feather="shield"/>Privacy
+        </a>
+    </nav>
+    <header>
+        <div id="TopBar">
+            <label id="Search"><img data-feather="search">
+                <input placeholder="Search..."/>
+            </label>
+            <a id="NotificationBell" href="#"><img data-feather="bell"/></a>
+
+            <a id="AccountControl" href="#">
+                <img src="https://via.placeholder.com/50"/>
+                <p>Account Name</p>
+            </a>
+        </div>
+        <div id="ContextBar">
+            <div>
+                <img src="https://via.placeholder.com/50"/>
+                <p>Hello there,<br/><b class="large">Account Name (@Tag)</b></p>
+            </div>
+
+            <div id="ContextControls">
+                <button>New</button>
+                <button>Upload</button>
+                <button>Share</button>
+            </div>
+        </div>
+    </header>
+    <main>
+
+    </main>
 </body>
 </html>

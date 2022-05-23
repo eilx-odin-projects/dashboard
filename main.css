@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;700&display=swap');
+
+:root {
+    --accent: rgb(13, 133, 180);
+    --main-bg: rgb(207, 207, 207);
+
+    font-family: "Nunito", sans-serif;
+    /* TODO: Fonts */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    display: grid;
+    grid-template:
+        "sidebar header" max-content
+        "sidebar main" 1fr
+        / max-content 1fr;
+}
+
+header {
+    grid-area: header;
+    padding: 1em 1.5em;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+    z-index: 0;
+}
+
+main {
+    grid-area: main;
+    background: var(--main-bg);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    filter: brightness(80%);
+}
+
+.large {
+    font-size: 1.3em;
+}
+
+#SideControls {
+    grid-area: sidebar;
+    background: var(--accent);
+    color: white;
+    padding: 1em;
+    padding-right: 4em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    z-index: 1;
+}
+
+#SideControls a {
+    width: max-content;
+}
+
+#SideControls > :first-child {
+    font-weight: bold;
+}
+
+#SideControls > :first-child :first-child {
+    margin-right: 0.5em;
+    /* TODO: Scale this */
+}
+
+#SideControls a > :first-child {
+    margin-right: 1em;
+    vertical-align: middle;
+}
+
+#TopBar {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    padding-bottom: 1em;
+}
+
+#TopBar * {
+    vertical-align: middle;
+}
+
+#NotificationBell:hover {
+    filter: invert(50%);
+}
+
+#Search {
+    margin-right: auto;
+}
+
+#Search input {
+    border-radius: 1em;
+    padding: 0.5em 1em;
+    border: none;
+    background: rgb(231, 231, 231)
+}
+
+#AccountControl {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    color: black;
+    font-weight: bold;
+}
+
+#AccountControl img {
+    border-radius: 50%;
+}
+
+#AccountControl:hover p {
+    margin-bottom: -2px;
+    border-bottom: solid 2px black;
+}
+
+#ContextBar {
+    display: flex;
+    align-items: center;
+}
+
+#ContextBar :first-child * {
+    vertical-align: middle;
+    border-radius: 50%;
+    margin-right: 0.5em;
+}
+
+#ContextBar p {
+    display: inline-block;
+}
+
+#ContextControls {
+    margin-left: auto;
+    display: flex;
+    gap: 1em;
+}
+
+#ContextControls button {
+    background: var(--accent);
+    border: none;
+    color: white;
+    padding: 0.75em 1.5em;
+    border-radius: 5em;
+    cursor: pointer;
+}
+
+#ContextControls button:hover {
+    filter: brightness(90%);
+}
+
+#ContextControls button:active {
+    filter: brightness(80%);
+}
