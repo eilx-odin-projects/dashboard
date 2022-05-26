@@ -1,159 +1,409 @@
+/*#region Imports*/
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;700&display=swap');
-
-:root {
-    --accent: rgb(13, 133, 180);
-    --main-bg: rgb(207, 207, 207);
-
-    font-family: "Nunito", sans-serif;
-    /* TODO: Fonts */
+/*#endregion*/
+/*#region Feather Icons*/
+.feather {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    vertical-align: middle;
 }
-
+/*#endregion */
+/*#region Reset*/
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
+svg {
+    margin-bottom: 0.1em;
+}
+/*#endregion */
+/*#region Global variables*/
+:root {
+    --accent: rgb(16, 142, 196);
+    --main-bg: rgb(225, 225, 225);
+
+    font-family: "Nunito", sans-serif;
+}
+/*#endregion*/
+/*#region Classes*/
+img.circle {
+    border-radius: 50%;
+}
+
+a.button {
+    text-decoration: none;
+    font-weight: bold;
+    color: inherit;
+}
+/*#endregion*/
+/*#region Layouts*/
 body {
     height: 100vh;
     display: grid;
     grid-template:
-        "sidebar header" max-content
-        "sidebar main" 1fr
-        / max-content 1fr;
+        "navigation header" max-content
+        "navigation main" 1fr
+        / max-content 1fr
+}
+
+nav {
+    grid-area: navigation;
 }
 
 header {
     grid-area: header;
-    padding: 1em 1.5em;
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
-    z-index: 0;
 }
 
 main {
     grid-area: main;
-    background: var(--main-bg);
+    display: grid;
+    grid-template:
+        "projects announcements" 1fr
+        "projects trending" 1fr
+        / 1fr max-content;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
+#Projects {
+    grid-area: projects;
 }
 
-a:hover {
-    filter: brightness(80%);
+#Announcements {
+    grid-area: announcements;
 }
 
-.large {
-    font-size: 1.3em;
+#Trending {
+    grid-area: trending;
 }
-
-#SideControls {
-    grid-area: sidebar;
-    background: var(--accent);
+/*#endregion*/
+/*#region Navigation bar*/
+#Navigation {
+    padding: 0.5em 4em 0 1.5em;
     color: white;
-    padding: 1em;
-    padding-right: 4em;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5em;
+    background: var(--accent);
     z-index: 1;
 }
 
-#SideControls a {
-    width: max-content;
+#Navigation menu {
+    list-style: none;
 }
 
-#SideControls > :first-child {
-    font-weight: bold;
+#Navigation a {
+    display: inline-block;
+    padding: 0.5em 0;
+    transition: margin 150ms, filter 150ms;
 }
 
-#SideControls > :first-child :first-child {
+#Navigation a:hover:not(:active) {
+    filter: brightness(85%);
+}
+
+#Navigation li:not(:first-child) a:hover:not(:active) {
+    margin-left: 1em;
+}
+
+#Navigation li:first-child svg {
+    transform: scale(1.7);
     margin-right: 0.5em;
-    /* TODO: Scale this */
 }
 
-#SideControls a > :first-child {
-    margin-right: 1em;
-    vertical-align: middle;
+#Navigation li:not(:first-child) svg {
+    margin-right: 0.75em;
+}
+/*#endregion*/
+/*#region Header*/
+header {
+    padding: 0.5em 1.5em 1em;
+    z-index: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-#TopBar {
+#Header, #Contextual {
     display: flex;
     align-items: center;
     gap: 1em;
-    padding-bottom: 1em;
 }
 
-#TopBar * {
-    vertical-align: middle;
-}
-
-#NotificationBell:hover {
-    filter: invert(50%);
+#Header {
+    margin-bottom: 1em;
 }
 
 #Search {
+    flex-grow: 1;
     margin-right: auto;
 }
 
-#Search input {
-    border-radius: 1em;
-    padding: 0.5em 1em;
-    border: none;
-    background: rgb(231, 231, 231)
-}
-
-#AccountControl {
-    display: flex;
-    align-items: center;
-    gap: 1em;
-    color: black;
-    font-weight: bold;
-}
-
-#AccountControl img {
-    border-radius: 50%;
-}
-
-#AccountControl:hover p {
-    margin-bottom: -2px;
-    border-bottom: solid 2px black;
-}
-
-#ContextBar {
-    display: flex;
-    align-items: center;
-}
-
-#ContextBar :first-child * {
-    vertical-align: middle;
-    border-radius: 50%;
+#Search svg {
     margin-right: 0.5em;
 }
 
-#ContextBar p {
-    display: inline-block;
+#Search input {
+    width: 60%;
+    background: var(--main-bg);
+    font-family: inherit;
+    border: none;
+    border-radius: 2em;
+    font-size: 1em;
+    padding: 0.25em 1em;
 }
 
-#ContextControls {
-    margin-left: auto;
-    display: flex;
+#Header a,
+#Contextual span {
+    display: inline-flex;
+    align-items: center;
     gap: 1em;
 }
 
-#ContextControls button {
-    background: var(--accent);
+#Notification, #Account {
+    transition: color 100ms, filter 100ms, transform 100ms;
+}
+
+#Notification:hover:not(:active),
+#Account:hover:not(:active) {
+    color: rgb(100, 100, 100);
+    filter: brightness(110%);
+    transform: scale(1.1);
+}
+
+#Contextual span p {
+    font-size: 0.9em;
+}
+
+#Contextual span strong {
+    font-size: 1.5em;
+}
+
+#Contextual menu {
+    display: flex;
+    gap: 1em;
+    list-style: none;
+    margin-left: auto;
+}
+
+#Contextual button {
+    padding: 0.5em 1.5em;
     border: none;
-    color: white;
-    padding: 0.75em 1.5em;
-    border-radius: 5em;
     cursor: pointer;
+    color: white;
+    background: var(--accent);
+    font-family: inherit;
+    font-weight: bold;
+    border-radius: 2em;
+    transition: filter 100ms, transform 100ms;
 }
 
-#ContextControls button:hover {
-    filter: brightness(90%);
+#Contextual button:hover:not(:active) {
+    transform: scale(1.1);
+    filter: brightness(110%);
+}
+/*#endregion*/
+/*#region Main*/
+main {
+    gap: 2em;
+    padding: 2em;
+    background: var(--main-bg);
+    overflow: auto;
 }
 
-#ContextControls button:active {
-    filter: brightness(80%);
+main h2 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
 }
+
+#Projects section {
+    display: grid;
+    gap: 2em;
+    grid-template-columns: repeat(auto-fit, 350px);
+    grid-auto-rows: min-content;
+}
+
+#Projects x-project {
+    font-size: 0.8em;
+    display: flex;
+    gap: 2em;
+    flex-direction: column;
+    padding: 2em;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+    background: white;
+    border-radius: 10px;
+}
+
+#Projects x-project::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 6px;
+    background: orange;
+    transition: width 100ms;
+}
+
+#Announcements,
+#Trending {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+#Announcements section,
+#Trending section {
+    display: block;
+    background: white;
+    border-radius: 10px;
+}
+
+#Announcements section {
+    padding: 0.5em 1em;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+#Announcements section::-webkit-scrollbar {
+    width: 4px;
+}
+
+#Announcements section::-webkit-scrollbar-thumb {
+    border-radius: 1em;
+    background: gray;
+}
+
+#Announcements section a {
+    padding: 1em;
+    max-width: 250px;
+    color: black;
+    text-decoration: none;
+    transition: margin 100ms;
+}
+
+#Announcements section a:hover:not(:active) {
+    margin-left: 0.5em;
+    margin-right: -0.5em;
+}
+
+#Announcements h3 {
+    font-size: 1em;
+}
+
+#Announcements p {
+    line-height: 1em;
+    font-size: 0.8em;
+    color: rgb(75, 75, 75);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+}
+
+#Trending section {
+    flex-grow: 1;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-evenly;
+}
+
+#Trending a {
+    display: flex;
+    align-items: center;
+    color: black;
+    text-decoration: none;
+    padding: 0 3em 0 1em;
+    gap: 1em;
+    transition: filter 100ms, margin 100ms;
+}
+
+#Trending a:hover:not(:active) {
+    filter: invert(20%);
+    margin-left: 0.5em;
+    margin-right: -0.5em;
+}
+
+#Trending a p {
+    color: rgb(75, 75, 75);
+    font-size: 0.9em;
+}
+/*#endregion*/
+/*#region Media Queries*/
+@media screen and (max-width: 1010px) {
+    body {
+        grid-template:
+            "header" min-content
+            "main" min-content
+            "navigation" min-content
+            / 1fr;
+    }
+
+    main {
+        grid-template:
+            "announcements" min-content
+            "projects" min-content
+            "trending" min-content
+            / 1fr;
+    }
+
+    #Navigation menu {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #Navigation menu a {
+        width: 100%;
+    }
+
+    #Header {
+        align-items: center;
+        position: relative;
+    }
+
+    #Search {
+        display: flex;
+        justify-content: center;
+    }
+
+    #Search svg {
+        display: none;
+    }
+
+    #Notification {
+        position: absolute;
+        right: 0;
+    }
+
+    #Header > :last-child {
+        display: none;
+    }
+
+    #Contextual {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #Contextual menu {
+        margin: 0;
+    }
+
+    #Projects section {
+        align-items: center;
+        grid-template-columns: 1fr;
+    }
+
+    #Announcements section a {
+        max-width: 100%;
+    }
+
+    #Trending section a {
+        margin: 1em 0;
+    }
+}
+/*#endregion*/

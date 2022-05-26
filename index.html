@@ -1,69 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css" />
-    <script src="https://unpkg.com/feather-icons"></script>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link rel="stylesheet" href="main.css"/>
     <script src="main.js" type="module" defer></script>
     <title>Dashboard</title>
 </head>
 <body>
-    <nav id="SideControls">
-        <a class="large" href="#">
-            <img data-feather="image" />Dashboard
-        </a>
-        <br />
-        <a href="#">
-            <img data-feather="home"/>Home
-        </a><a href="#">
-            <img data-feather="layout"/>Profile
-        </a><a href="#">
-            <img data-feather="message-square"/>Messages
-        </a><a href="#">
-            <img data-feather="clock"/>History
-        </a><a href="#">
-            <img data-feather="layers"/>Tasks
-        </a><a href="#">
-            <img data-feather="users"/>Communities
-        </a>
-        <br />
-        <a href="#">
-            <img data-feather="settings"/>Settings
-        </a><a href="#">
-            <img data-feather="help-circle"/>Support
-        </a><a href="#">
-            <img data-feather="shield"/>Privacy
-        </a>
-    </nav>
-    <header>
-        <div id="TopBar">
-            <label id="Search"><img data-feather="search">
-                <input placeholder="Search..."/>
-            </label>
-            <a id="NotificationBell" href="#"><img data-feather="bell"/></a>
+    <nav id="Navigation"><menu>
+        <li><h1><a class="button" href="#">
+            <svg class="feather"><use href="feather.svg#image"/></svg>
+            Dashboard
+        </a></h1></li>
+        <br/>
+        <li><a class="button" href="#">
+            <svg class="feather"><use href="feather.svg#home"/></svg>
+            Home
+        </a></li>
+        <li><a class="button" href="#">
+            <svg class="feather"><use href="feather.svg#layout"/></svg>
+            Profile
+        </a></li>
+        <li><a class="button" href="#">
+            <svg class="feather"><use href="feather.svg#message-square"/></svg>
+            Messages
+        </a></li>
+        <li><a class="button" href="#">
+            <svg class="feather"><use href="feather.svg#clock"/></svg>
+            History
+        </a></li>
+        <li><a class="button" href="#">
+            <svg class="feather"><use href="feather.svg#layers"/></svg>
+            Tasks
+        </a></li>
+        <li><a class="button" href="#">
+            <svg class="feather"><use href="feather.svg#users"/></svg>
+            Communities
+        </a></li>
+        <br/>
+        <li><a class="button" href="#">
+            <svg class="feather"><use href="feather.svg#settings"/></svg>
+            Settings
+        </a></li>
+        <li><a class="button" href="#">
+            <svg class="feather"><use href="feather.svg#help-circle"/></svg>
+            Support
+        </a></li>
+        <li><a class="button" href="#">
+            <svg class="feather"><use href="feather.svg#shield"/></svg>
+            Privacy
+        </a></li>
+    </menu></nav>
 
-            <a id="AccountControl" href="#">
-                <img src="https://via.placeholder.com/50"/>
-                <p>Account Name</p>
+    <header>
+        <div id="Header">
+            <label id="Search">
+                <svg class="feather"><use href="feather.svg#search"/></svg>
+                <input placeholder="search..."/>
+            </label>
+
+            <a id="Notification" class="button" href="#">
+                <svg class="feather"><use href="feather.svg#bell"/></svg>
+            </a>
+
+            <a id="Account" class="button" href="#">
+                <img height="50" width="50" class="circle" src="https://picsum.photos/50?random=1"/>
+                <strong>User Name</strong>
             </a>
         </div>
-        <div id="ContextBar">
-            <div>
-                <img src="https://via.placeholder.com/50"/>
-                <p>Hello there,<br/><b class="large">Account Name (@Tag)</b></p>
-            </div>
-
-            <div id="ContextControls">
-                <button>New</button>
-                <button>Upload</button>
-                <button>Share</button>
-            </div>
+        <div id="Contextual">
+            <span>
+                <img height="50" width="50" class="circle" src="https://picsum.photos/50?random=1"/>
+                <p>
+                    Hi there,<br/>
+                    <strong>User Name (@tag)</strong>
+                </p>
+            </span>
+            <menu>
+                <li><button>New</button></li>
+                <li><button>Upload</button></li>
+                <li><button>Share</button></li>
+            </menu>
         </div>
     </header>
-    <main>
 
+    <main>
+        <div id="Projects">
+            <h2>Your Projects</h2>
+
+            <section>
+                <x-project>
+                    <h3 slot="title">Project 1</h3>
+                    <span slot="description">
+                        An example project
+                    </span>
+                </x-project>
+                <x-project>
+                    <h3 slot="title">Project 2</h3>
+                </x-project>
+                <x-project>
+                    <h3 slot="title">Project 3</h3>
+                </x-project>
+                <x-project>
+                    <h3 slot="title">Project 4</h3>
+                </x-project>
+                <x-project>
+                    <h3 slot="title">Project 5</h3>
+                </x-project>
+                <x-project>
+                    <h3 slot="title">Project 6</h3>
+                </x-project>
+            </section>
+        </div>
+
+        <div id="Announcements">
+            <h2>Announcements</h2>
+            <section class="card">
+                <a
+                    is="x-announcement"
+                    href="#"
+                    data-title="Announcement 1"
+                    data-desc="Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Odit sunt eligendi nobis quae accusantium doloribus illo,
+                    amet explicabo facilis est soluta nam beatae?
+                    Recusandae."
+                    >
+                </a>
+                <hr/>
+                <a
+                    is="x-announcement"
+                    href="#"
+                    data-title="Announcement 2"
+                    data-desc="Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Odit sunt eligendi nobis quae accusantium doloribus illo,
+                    amet explicabo facilis est soluta nam beatae?
+                    Recusandae."
+                    >
+                </a>
+                <hr/>
+                <a
+                    is="x-announcement"
+                    href="#"
+                    data-title="Announcement 3"
+                    data-desc="Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Odit sunt eligendi nobis quae accusantium doloribus illo,
+                    amet explicabo facilis est soluta nam beatae?
+                    Recusandae."
+                    >
+                </a>
+                <hr/>
+                <a
+                    is="x-announcement"
+                    href="#"
+                    data-title="Announcement 4"
+                    data-desc="Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Odit sunt eligendi nobis quae accusantium doloribus illo,
+                    amet explicabo facilis est soluta nam beatae?
+                    Recusandae."
+                    >
+                </a>
+                <hr/>
+                <a
+                    is="x-announcement"
+                    href="#"
+                    data-title="Announcement 5"
+                    data-desc="Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Odit sunt eligendi nobis quae accusantium doloribus illo,
+                    amet explicabo facilis est soluta nam beatae?
+                    Recusandae."
+                    >
+                </a>
+            </section>
+        </div>
+
+        <div id="Trending">
+            <h2>Trending</h2>
+            <section class="card">
+                <a
+                    is="x-trend"
+                    href="#"
+                    data-img="https://picsum.photos/50?random=2"
+                    data-name="name1"
+                    data-desc="lorem ipsum wowow"
+                    >
+                </a>
+                <a
+                    is="x-trend"
+                    href="#"
+                    data-img="https://picsum.photos/50?random=3"
+                    data-name="name2"
+                    data-desc="lorem ipsum wowow"
+                    >
+                </a>
+                <a
+                    is="x-trend"
+                    href="#"
+                    data-img="https://picsum.photos/50?random=4"
+                    data-name="name3"
+                    data-desc="lorem ipsum wow"
+                    >
+                </a>
+                <a
+                    is="x-trend"
+                    href="#"
+                    data-img="https://picsum.photos/50?random=5"
+                    data-name="name4"
+                    data-desc="lorem ipsum wow"
+                    >
+                </a>
+            </section>
+        </div>
     </main>
+
+    <template id="ProjectCard">
+        <link rel="stylesheet" href="main.css"/>
+        <style>
+            a {
+                text-decoration: none;
+                color: black;
+                height: 100%;
+                transition: transform 150ms, padding 150ms;
+            }
+
+            a:hover {
+                transform: scale(1.05);
+                padding-left: 0.5em;
+            }
+
+            a p {
+                font-size: 1.1em;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 4;
+                overflow: hidden;
+            }
+
+            menu {
+                list-style: none;
+                display: flex;
+                margin-top: auto;
+                justify-content: flex-end;
+            }
+
+            button {
+                transform: scale(0.8);
+                border: none;
+                background: inherit;
+                padding: 0 1em;
+                cursor: pointer;
+                transition: transform 100ms, color 100ms;
+            }
+
+            menu :last-child button {
+                padding-right: 0;
+            }
+
+            button:hover:not(:active) {
+                color: var(--accent);
+                transform: scale(1.15);
+            }
+        </style>
+
+        <a href="#">
+            <h3><slot name="title">TITLE</slot></h3>
+            <p><slot name="description">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Repudiandae nostrum voluptatem tempora quasi et repellendus voluptates sit ratione alias,
+                provident mollitia sunt excepturi eligendi, dolore recusandae minus! Doloribus, accusamus minus.
+            </slot></p>
+        </a>
+        <menu>
+            <li><button><svg class="feather"><use href="feather.svg#star"/></svg></button></li>
+            <li><button><svg class="feather"><use href="feather.svg#eye"/></svg></button></li>
+            <li><button><svg class="feather"><use href="feather.svg#share-2"/></svg></button></li>
+        </menu>
+    </template>
 </body>
 </html>
